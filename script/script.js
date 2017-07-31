@@ -4,7 +4,10 @@ $(document).ready(function(){
 	
 	var userSymb="X";
 	var compSymb="O";
-
+	function setCompSymb(index){
+		$("#"+index).html(compSymb);
+		arr[index]=compSymb;
+	}
 	$("#0").on("click",{param:0},userTurn);
 	$("#1").on("click",{param:1},userTurn);
 	$("#2").on("click",{param:2},userTurn);
@@ -17,10 +20,10 @@ $(document).ready(function(){
 	
 	function userTurn(event){
 		
-		if($("#"+event.data.param).text().search(/XO/)===-1){
-		$("#"+event.data.param).html(userSymb);
-		arr[event.data.param]=userSymb;
-		compTurn();
+		if($("#"+event.data.param).text().search(/[XO]/)===-1){
+			$("#"+event.data.param).html(userSymb);
+			arr[event.data.param]=userSymb;
+		    compTurn();
 		
 	    }
 	}
@@ -90,22 +93,87 @@ $(document).ready(function(){
 	function compTurn(){
 		var ch=checkGame();
 		if(ch!==-1)
-		{
-			$("#"+ch).html(compSymb);
-			arr[ch]=compSymb;
-		}
+			setCompSymb(ch);
+			
 		else
 		{
-			var k= arr.join('').split('X').length-1;
+			var k= arr.join('').split(userSymb).length-1;
 
             if(k === 1 )
             {
-            	$("#4").html(compSymb);
-            	arr[4]=compSymb;
-            }
+            	var uPos=arr.indexOf(userSymb);
+            	if(uPos!==4){
+            		setCompSymb(4);
+            	}
+            	else{
+            		setCompSymb(2);
+            	}
+			}
             else if(k === 2)
             {
-
+            	var uPos=[];
+            	for(var i=0;i<9;i++)
+            	{
+            		if(arr[i]===userSymb)
+            			uPos.push(i);
+            	}
+            	//console.log(uPos);
+            	if(arr[0]==userSymb )
+            	{
+                	if(arr[7]==userSymb){
+                		setCompSymb(3);
+                	}
+                	else if(arr[5]==userSymb){
+                		setCompSymb(2);
+                	}
+                	else if(arr[8]==userSymb){
+                		setCompSymb(3);
+                	}
+          		}
+          		else if(arr[2]==userSymb){
+          			if(arr[3]==userSymb)
+          				setCompSymb(1);
+          			else if(arr[7]==userSymb)
+          				setCompSymb(3);
+          			else if(arr[6]==userSymb)
+          				setCompSymb(4);
+          		}
+          		else if(arr[6]==userSymb){
+          			if(arr[1]==userSymb)
+          				setCompSymb(4);
+          			else if(arr[2]==userSymb)
+          				setCompSymb(5);
+          			else if(arr[5]==userSymb)
+          				setCompSymb(7);
+          		}
+          		else if(arr[8]==userSymb){
+          			if(arr[3]==userSymb)
+          				setCompSymb(7);
+          			else if(arr[0]==userSymb)
+          				setCompSymb(3);
+          			else if(arr[1]==userSymb)
+          				setCompSymb(3);
+          		}
+          		else if(arr[1]==userSymb){
+          			if(arr[3]==userSymb)
+          				setCompSymb(0);
+          			else if(arr[7]==userSymb)
+          				setCompSymb(0);
+          			else if(arr[5]==userSymb)
+          				setCompSymb(2);
+          		}
+          		else if(arr[3]==userSymb){
+          			if(arr[7]==userSymb)
+          				setCompSymb(6);
+          			else if(arr[5]==userSymb)
+          				setCompSymb(0);
+          			
+          		}
+          		else if(arr[7]==userSymb){
+          			if(arr[5]==userSymb)
+          				setCompSymb(8);
+          		}
+            	
             }
 		}
 	}
