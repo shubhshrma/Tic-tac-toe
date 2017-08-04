@@ -1,9 +1,21 @@
 $(document).ready(function(){
 	
+	$("#playBox").hide();
 	var arr=["","","","","","","","",""];
 	
 	var userSymb="X";
 	var compSymb="O";
+	$("#selectX").on("click",function(){
+		$("#symbSelect").hide();
+		$("#playBox").show();
+	});
+	$("#selectO").on("click",function(){
+		$("#symbSelect").hide();
+		$("#playBox").show();
+		userSymb="O";
+		compSymb="X";
+		//console.log(1);
+	});
 	function setCompSymb(index){
 		$("#"+index).html(compSymb);
 		arr[index]=compSymb;
