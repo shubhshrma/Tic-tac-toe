@@ -35,6 +35,9 @@ $(document).ready(function(){
 		if($("#"+event.data.param).text().search(/[XO]/)===-1){
 			$("#"+event.data.param).html(userSymb);
 			arr[event.data.param]=userSymb;
+			var e=checkUserEndGame(userSymb);
+			if(e===1)
+				endGame(userSymb);
 		    compTurn();
 		
 	    }
@@ -46,10 +49,31 @@ $(document).ready(function(){
 	function checkUserGame(){
 			return checkGame(userSymb,compSymb);
 	}
+	function checkUserEndGame(symb1){
+		if((arr[0]==symb1 && arr[1]==symb1 && arr[2]==symb1))
+			return 1;
+		else if( (arr[3]==symb1 && arr[4]==symb1 && arr[5]==symb1))
+			return 1;
+		else if( (arr[6]==symb1 && arr[7]==symb1 && arr[8]==symb1))
+			return 1;
+		else if( (arr[0]==symb1 && arr[3]==symb1 && arr[6]==symb1))
+			return 1;
+		else if( (arr[1]==symb1 && arr[4]==symb1 && arr[7]==symb1))
+			return 1;
+		else if( (arr[2]==symb1 && arr[5]==symb1 && arr[8]==symb1))
+			return 1;
+		else if( (arr[0]==symb1 && arr[4]==symb1 && arr[8]==symb1))
+			return 1;
+		else if( (arr[2]==symb1 && arr[4]==symb1 && arr[6]==symb1))
+			return 1;
+		else
+			return 0;
 
+
+	}
 	function checkGame(symb1,symb2){
 		
-		if( (arr[0]==symb1 && arr[1]==symb1 && arr[2]!==symb2) )
+		if((arr[0]==symb1 && arr[1]==symb1 && arr[2]!==symb2))
 			return 2;
 		if((arr[1]==symb1 && arr[2]==symb1 && arr[0]!==symb2))
 			return 0;
@@ -109,14 +133,38 @@ $(document).ready(function(){
         return -1;
 
     }
+    function endGame(symb){
+    	$("#playBox").hide();
+    	$("#gameResult").hide();
+    	if(symb===userSymb)
+    	{
 
+    		$("#gameResult").html('<h2>Congrats!You won...');
+
+    	}
+    	else if(symb=="draw")
+    	{
+    		$("#gameResult").html('<h2>Game draw...');
+    	}
+    	else
+    		$("#gameResult").html('<h2>Oops!Bot wins...');
+    	arr=["","","","","","","","",""];
+    	$("#gameResult").fadeIn();
+    	$("#gameResult").fadeOut();
+
+    }
 	function compTurn(){
 		var u=checkUserGame();
 		var c=checkCompGame();
 		if(c>-1)
+		{
 			setCompSymb(c);
-		else if(u!==-1)
+            
+		}
+		else if(u>-1)
+		{
 			setCompSymb(u);
+		}
 			
 		else
 		{
@@ -168,6 +216,8 @@ $(document).ready(function(){
           				setCompSymb(5);
           			else if(arr[5]==userSymb)
           				setCompSymb(7);
+          			else if(arr[4]==userSymb)
+          				setCompSymb(0);
           		}
           		else if(arr[8]==userSymb){
           			if(arr[3]==userSymb)
@@ -198,7 +248,7 @@ $(document).ready(function(){
           		}
             	
             }
-            else if(k >= 3)
+            else if(k >= 3 && k<5)
             {
             	
             	/*while(f===0){
@@ -229,6 +279,10 @@ $(document).ready(function(){
             		}
 
             	}
+            }
+            else if(k===5)
+            {
+            	endGame("draw");
             }
 		}
 	}
