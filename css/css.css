@@ -1,10 +1,51 @@
+body{
+	background-color:#14bdac;
+
+}
+h1{
+	font-family: 'Courgette', cursive;
+	margin-top:60px;
+	font-size: 60px;
+	margin-bottom: 60px;
+}
 .box{
 	width:50px;
 	border:1px solid black;
 	float:left;
+	border-radius:5px;
+	background-color: yellow;
+	padding-top:10px;
 	height:50px;
+	font-family: 'Courgette', cursive;
+	font-size: 40px;
+	height: 80px;
+	width: 80px;
+	box-sizing: border-box;
+
+}
+#symbSelect {
+	margin-left: 50px;
+
 }
 #symbSelect h2{
-	margin top:20px;
-	margin-bottom: 20px;
+	
+	margin-bottom: 30px;
+	font-family: 'Courgette', cursive;
+    font-size: 40px;
+}
+#playBox .box{
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+}
+#playBox{
+	min-width: 150px;
+	margin-left: 100px;
+}
+#gameResult{
+	font-family:  'Courgette', cursive;
+
+}
+#gameResult h2{
+	font-size:40px;
 }

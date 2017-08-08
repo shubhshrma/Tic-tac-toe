@@ -134,23 +134,32 @@ $(document).ready(function(){
 
     }
     function endGame(symb){
-    	$("#playBox").hide();
+    	
     	$("#gameResult").hide();
     	if(symb===userSymb)
     	{
 
-    		$("#gameResult").html('<h2>Congrats!You won...');
+    		$("#gameResult").html('<h2 class="text-center">Congrats!You won...');
 
     	}
     	else if(symb=="draw")
     	{
-    		$("#gameResult").html('<h2>Game draw...');
+    		$("#gameResult").html('<h2 class="text-center">Game draw...');
     	}
     	else
-    		$("#gameResult").html('<h2>Oops!Bot wins...');
+    		$("#gameResult").html('<h2 class="text-center">Oops!Bot wins...');
+
     	arr=["","","","","","","","",""];
-    	$("#gameResult").fadeIn();
-    	$("#gameResult").fadeOut();
+    	$("#gameResult").fadeIn(1000);
+    	
+    
+    	$("#gameResult").delay(1000).fadeOut(1000,function(){
+    		$("#playBox").hide();
+    		for(var i=0;i<=8;i++)
+    		$("#"+i).html("");
+    		$("#symbSelect").delay().fadeIn();
+    	});
+    	
 
     }
 	function compTurn(){
@@ -159,7 +168,7 @@ $(document).ready(function(){
 		if(c>-1)
 		{
 			setCompSymb(c);
-            
+            endGame(compSymb);
 		}
 		else if(u>-1)
 		{
@@ -207,14 +216,12 @@ $(document).ready(function(){
           			else if(arr[7]==userSymb)
           				setCompSymb(3);
           			else if(arr[6]==userSymb)
-          				setCompSymb(4);
+          				setCompSymb(5);
           		}
           		else if(arr[6]==userSymb){
           			if(arr[1]==userSymb)
-          				setCompSymb(4);
-          			else if(arr[2]==userSymb)
-          				setCompSymb(5);
-          			else if(arr[5]==userSymb)
+          				setCompSymb(0);
+                	else if(arr[5]==userSymb)
           				setCompSymb(7);
           			else if(arr[4]==userSymb)
           				setCompSymb(0);
