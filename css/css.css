@@ -1,27 +1,50 @@
 body{
-	background-color:#14bdac;
+	background-color:#669955;
 
 }
 h1{
 	font-family: 'Courgette', cursive;
 	margin-top:60px;
-	font-size: 60px;
+	font-size: 70px;
 	margin-bottom: 60px;
+	
+}
+#tic{
+	color:#d80000;
+}
+#tac{
+	color: #00ff40;
+}
+#toe{
+	color: #0033ff;
 }
 .box{
 	width:50px;
 	border:1px solid black;
 	float:left;
-	border-radius:5px;
-	background-color: yellow;
+	border-radius:10px;
+	background-color: #0033ff;
 	padding-top:10px;
 	height:50px;
 	font-family: 'Courgette', cursive;
 	font-size: 40px;
 	height: 80px;
 	width: 80px;
-	box-sizing: border-box;
+    box-shadow: 5px 5px 5px black;
+}
+#symbSelect .box{
+	color:white;
+}
+#symbSelect .box:hover{
+	color:white;
+}
 
+#symbSelect .box #tic:hover{
+    color: #d80000;
+}
+
+#symbSelect .box #tac:hover{
+    color: #00ff00;
 }
 #symbSelect {
 	margin-left: 50px;
@@ -29,7 +52,7 @@ h1{
 }
 #symbSelect h2{
 	
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	font-family: 'Courgette', cursive;
     font-size: 40px;
 }

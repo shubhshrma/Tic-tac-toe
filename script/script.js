@@ -6,12 +6,13 @@ $(document).ready(function(){
 	var userSymb="X";
 	var compSymb="O";
 	$("#selectX").on("click",function(){
-		$("#symbSelect").hide();
-		$("#playBox").show();
+		$("#symbSelect").fadeOut(1000,function(){$("#playBox").fadeIn(1000)
+	});
 	});
 	$("#selectO").on("click",function(){
-		$("#symbSelect").hide();
-		$("#playBox").show();
+		$("#symbSelect").fadeOut(1000,function(){$("#playBox").fadeIn(1000)
+	});
+		
 		userSymb="O";
 		compSymb="X";
 		//console.log(1);
