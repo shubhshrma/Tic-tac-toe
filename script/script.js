@@ -1,23 +1,31 @@
 $(document).ready(function(){
 	
-	$("#playBox").hide();
+
 	var arr=["","","","","","","","",""];
 	
-	var userSymb="X";
-	var compSymb="O";
+	var userSymb;
+	var compSymb;
 	$("#selectX").on("click",function(){
-		$("#symbSelect").fadeOut(1000,function(){$("#playBox").fadeIn(1000)
+		$("#symbSelect").fadeOut(1000,function(){$("#playBox").fadeIn(1000);
+		userSymb="X";
+		compSymb="O";
 	});
 	});
-	$("#selectO").on("click",function(){
-		$("#symbSelect").fadeOut(1000,function(){$("#playBox").fadeIn(1000)
-	});
-		
+	$("#selectO").click(function(){
 		userSymb="O";
 		compSymb="X";
+		$("#symbSelect").fadeOut(1000,function(){
+			$("#playBox").fadeIn(1000);
+			
+	});
+		
 		//console.log(1);
 	});
 	function setCompSymb(index){
+		if(compSymb==="X")
+			$("#"+index).css("color","#d80000");
+		else
+			$("#"+index).css("color","#00ff40");
 		$("#"+index).html(compSymb);
 		arr[index]=compSymb;
 	}
@@ -34,11 +42,16 @@ $(document).ready(function(){
 	function userTurn(event){
 		
 		if($("#"+event.data.param).text().search(/[XO]/)===-1){
+			if(userSymb==='X')
+				$("#"+event.data.param).css("color","#d80000");
+			else
+				$("#"+event.data.param).css("color","#00ff40");
 			$("#"+event.data.param).html(userSymb);
 			arr[event.data.param]=userSymb;
 			var e=checkUserEndGame(userSymb);
 			if(e===1)
 				endGame(userSymb);
+			else
 		    compTurn();
 		
 	    }
@@ -140,15 +153,15 @@ $(document).ready(function(){
     	if(symb===userSymb)
     	{
 
-    		$("#gameResult").html('<h2 class="text-center">Congrats!You won...');
+    		$("#gameResult").html('<h2 class="text-center green">Congrats!You won...');
 
     	}
     	else if(symb=="draw")
     	{
-    		$("#gameResult").html('<h2 class="text-center">Game draw...');
+    		$("#gameResult").html('<h2 class="text-center" style="color:white;">Game draw...');
     	}
     	else
-    		$("#gameResult").html('<h2 class="text-center">Oops!Bot wins...');
+    		$("#gameResult").html('<h2 class="text-center red">Oops!Bot wins...');
 
     	arr=["","","","","","","","",""];
     	$("#gameResult").fadeIn(1000);

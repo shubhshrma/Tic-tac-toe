@@ -1,24 +1,28 @@
 body{
-	background-color:#669955;
+	background-color: #ffff66;
 
 }
 h1{
-	font-family: 'Courgette', cursive;
+	font-family: 'Exo 2', sans-serif;
 	margin-top:60px;
 	font-size: 70px;
 	margin-bottom: 60px;
 	
 }
-#tic{
+.red{
 	color:#d80000;
+	/*red*/
 }
-#tac{
+.green{
 	color: #00ff40;
+	/*green*/
 }
-#toe{
+.blue{
 	color: #0033ff;
+	/*blue*/
 }
 .box{
+	
 	width:50px;
 	border:1px solid black;
 	float:left;
@@ -26,7 +30,7 @@ h1{
 	background-color: #0033ff;
 	padding-top:10px;
 	height:50px;
-	font-family: 'Courgette', cursive;
+    font-family: 'Lato', sans-serif;
 	font-size: 40px;
 	height: 80px;
 	width: 80px;
@@ -35,25 +39,24 @@ h1{
 #symbSelect .box{
 	color:white;
 }
-#symbSelect .box:hover{
-	color:white;
-}
 
-#symbSelect .box #tic:hover{
+
+#symbSelect #selectX:hover{
     color: #d80000;
+    box-shadow: none;
 }
 
-#symbSelect .box #tac:hover{
+#symbSelect #selectO:hover{
     color: #00ff00;
+    box-shadow: none;
 }
 #symbSelect {
 	margin-left: 50px;
-
 }
 #symbSelect h2{
 	
 	margin-bottom: 50px;
-	font-family: 'Courgette', cursive;
+	font-family: 'Lato', sans-serif;
     font-size: 40px;
 }
 #playBox .box{
@@ -66,8 +69,7 @@ h1{
 	margin-left: 100px;
 }
 #gameResult{
-	font-family:  'Courgette', cursive;
-
+	font-family: 'Lato', sans-serif;
 }
 #gameResult h2{
 	font-size:40px;
