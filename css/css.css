@@ -39,7 +39,9 @@ h1{
 #symbSelect .box{
 	color:white;
 }
-
+#symbSelect .row{
+	margin-left: 20px;
+}
 
 #symbSelect #selectX:hover{
     color: #d80000;
@@ -50,9 +52,8 @@ h1{
     color: #00ff00;
     box-shadow: none;
 }
-#symbSelect {
-	margin-left: 50px;
-}
+
+
 #symbSelect h2{
 	
 	margin-bottom: 50px;
@@ -63,6 +64,9 @@ h1{
 	margin-right: 10px;
 	margin-bottom: 10px;
 	padding-left: 20px;
+}
+#playBox .box:hover{
+	box-shadow: none;
 }
 #playBox{
 	min-width: 150px;

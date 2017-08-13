@@ -158,7 +158,7 @@ $(document).ready(function(){
     	}
     	else if(symb=="draw")
     	{
-    		$("#gameResult").html('<h2 class="text-center" style="color:white;">Game draw...');
+    		$("#gameResult").html('<h2 class="text-center blue">Game draw...');
     	}
     	else
     		$("#gameResult").html('<h2 class="text-center red">Oops!Bot wins...');
